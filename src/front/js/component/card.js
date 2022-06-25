@@ -15,7 +15,7 @@ function MyCard(props) {
         <Card.Text>
           {props.ingredients}
         </Card.Text>
-        <Button variant="primary">{props.price}</Button>
+        <Button variant="primary">{props.price.toFixed(2)}</Button>
       </Card.Body>
     </Card>
   );

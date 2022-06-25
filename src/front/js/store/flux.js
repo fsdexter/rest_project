@@ -514,6 +514,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 		setClientInfo: (client) =>{
 			setStore({client : client});
 		},
+		Login: async (email, password) => {
+			const store = getStore();
+
+			const raw = JSON.stringify({
+				email: email,
+				password: password
+			});
+
+			const requestOptions = {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: raw,
+				redirect: "follow"
+			};
+
+			try {
+				const response = await fetch(process.env.BACKEND_URL + "/api/login", requestOptions);
+				if (response.status !== 200) {
+					alert("Something went at LOGIN FETCH wrong");
+					return false;
+				}
+
+				const data = await response.json();
+				sessionStorage.setItem("token", data.access_token);
+				setStore({ token: data.access_token });
+				return true;
+			} catch (error) {
+				console.error("Something went wrong AT LOGIN try again");
+			}
+		},
 		}
 	};
 };

@@ -471,7 +471,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				vegan:false,
 				special:false,
 				},
-			]
+			],
+			order : []
 		},
 		actions: {
 		// 	// Use getActions to call a function within a fuction
@@ -500,6 +501,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		// 		//reset the global store
 		// 		setStore({ demo: demo });
 		// 	}
+		makeOrder: (index) => {
+			const store = getStore();
+			store.order.push(store.menu[index]);
+		},
+		removeFromOrder: (i) =>{
+			const store = getStore();
+			let aux = store.order.filter((item, index) => index !== i);
+			setStore({order : aux});
+		}
 		}
 	};
 };

@@ -17,3 +17,26 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class Dish(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    price = db.Column(db.Float(4), nullable=False)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    ingredients = db.Column(db.String(240), unique=True, nullable=False)
+    vegetarian = db.Column(db.Boolean)
+    vegan = db.Column(db.Boolean)
+    special = db.Column(db.Boolean)
+    img_url = db.Column(db.String(220), unique=False, nullable=True)
+
+    
+    def serialize(self):   
+        return{
+        "id": self.id,
+        "price": self.price,
+        "name": self.name,
+        "ingredients": self.ingredients,
+        "vegetarian": self.vegetarian,
+        "vegan": self.vegan,
+        "special": self.special,
+        "img_url": self.img_url,
+        }

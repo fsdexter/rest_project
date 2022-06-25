@@ -472,7 +472,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				special:false,
 				},
 			],
-			order : []
+			order : [],
+			client:{}
 		},
 		actions: {
 		// 	// Use getActions to call a function within a fuction
@@ -509,7 +510,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			const store = getStore();
 			let aux = store.order.filter((item, index) => index !== i);
 			setStore({order : aux});
-		}
+		},
+		setClientInfo: (client) =>{
+			setStore({client : client});
+		},
 		}
 	};
 };

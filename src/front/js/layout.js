@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Menu } from './pages/menu';
 import { Order } from "./pages/order";
+import { ConfirmedOrder } from "./pages/confirmedOrder";
 
 //create your first component
 const Layout = () => {
@@ -38,6 +39,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/Order">
 							<Order />
+						</Route>
+						<Route exact path="/confirmation">
+							<ConfirmedOrder />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -9,23 +9,24 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Menu } from './pages/menu';
+import { Menu } from "./pages/menu";
 import { Order } from "./pages/order";
 import { ConfirmedOrder } from "./pages/confirmedOrder";
+import { Login } from "./pages/login";
 
 //create your first component
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-	const basename = process.env.BASENAME || "";
+  //the basename is used when your project is published in a subdirectory and not in the root of the domain
+  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+  const basename = process.env.BASENAME || "";
 
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						{/* <Route exact path="/">
+  return (
+    <div>
+      <BrowserRouter basename={basename}>
+        <ScrollToTop>
+          <Navbar />
+          <Switch>
+            {/* <Route exact path="/">
 							<Home />
 						</Route>
 						<Route exact path="/demo">
@@ -34,24 +35,27 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route> */}
-						<Route exact path="/">
-							<Menu />
-						</Route>
-						<Route exact path="/Order">
-							<Order />
-						</Route>
-						<Route exact path="/confirmation">
-							<ConfirmedOrder />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
-	);
+            <Route exact path="/">
+              <Menu />
+            </Route>
+            <Route exact path="/Order">
+              <Order />
+            </Route>
+            <Route exact path="/confirmation">
+              <ConfirmedOrder />
+            </Route>
+            <Route exact path="/Login">
+              <Login />
+            </Route>
+            <Route>
+              <h1>Not found!</h1>
+            </Route>
+          </Switch>
+          <Footer />
+        </ScrollToTop>
+      </BrowserRouter>
+    </div>
+  );
 };
 
 export default injectContext(Layout);

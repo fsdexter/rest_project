@@ -547,6 +547,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((error) => console.log("error", error));
       },
+      syncLocalToken: () => {
+        const token = sessionStorage.getItem("token");
+        if (token && token != "" && token != null && token != undefined)
+          setStore({ token: token });
+      },
+      logout: () => {
+        sessionStorage.removeItem("token");
+        setStore({ token: null });
+      },
     },
   };
 };

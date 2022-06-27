@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
+  const history = useHistory();
 
   const [formValue, setFormValue] = useState({
     user: "",
@@ -19,6 +21,7 @@ export const Login = () => {
     e.preventDefault();
     // login function
     actions.login(formValue);
+    history.push("/admin");
   };
 
   return (

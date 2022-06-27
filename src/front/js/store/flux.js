@@ -539,8 +539,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
-          .then((response) => response.text())
-          .then((result) => console.log(result))
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            sessionStorage.setItem("token", result.access_token);
+            setStore({ token: result.access_token });
+          })
           .catch((error) => console.log("error", error));
       },
     },
